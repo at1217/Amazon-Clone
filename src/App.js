@@ -11,6 +11,16 @@ import Checkout from "./Checkout";
 import Login from "./Login";
 import { useStateValue } from './StateProvider';
 import { auth } from "./firebase"
+import Payment from './Payment';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import Orders from './Orders';
+import Orderconfirmation from './OrderConfirmation';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const promise = loadStripe(process.env.STRIPE);
 
 function App() {
 
@@ -45,8 +55,22 @@ console.log("USER IS >>> ", user);
             <Header />
             <Checkout />
           </Route>
+          <Route path="/orders">
+          <Header />
+            <Orders />
+          </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/payment">
+            <Header />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
+          </Route>
+          <Route path="/orderconfirmation">
+            <Header />
+            <Orderconfirmation />
           </Route>
           <Route path="/">
             <Header />

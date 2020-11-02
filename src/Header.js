@@ -32,29 +32,31 @@ function Header() {
             <div className="header__nav">
                 <Link to={!user && "/login"} className="header__link">
                     <div onClick={login} className="header__option">
-    <span className="header__optionLineOne">Hello {user?.email}</span>
-    <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
+                        <span className="header__optionLineOne">Hello {!user? 'Guest' : user.email}</span>
+                        <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
                     </div>     
                 </Link>
 
-                <Link to="/login" className="header__link">
+                <Link to="/orders">
                     <div className="header__option">
                         <span className="header__optionLineOne">Returns</span>
                         <span className="header__optionLineTwo">& Order</span>
                     </div>     
                 </Link>
 
-                <Link to="/login" className="header__link">
-                    <div className="header__option">
-                        <span className="header__optionLineOne">Your</span>
-                        <span className="header__optionLineTwo">Prime</span>
-                    </div>     
-                </Link>
+
+                <div className="header__option">
+                    <span className="header__optionLineOne">Your</span>
+                    <span className="header__optionLineTwo">Prime</span>
+                </div>     
+
 
                 <Link to="/checkout" className="header__link">
                     <div className="header__optionBasket">
                         <ShoppingBascketIcon />
-    <span className="header__optionLineTwo header__bascketCount">{basket?.length}</span>
+                        <span className="header__optionLineTwo header__bascketCount">
+                            {basket?.length}
+                        </span>
                     </div>
                 </Link>
             </div>            
