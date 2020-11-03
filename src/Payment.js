@@ -45,7 +45,7 @@ function Payment() {
             message: "Thank you very much for shopping with us. We hope you enjoyed your shopping and will come back soon!"
         }
 
-        emailjs.send(process.env.SERVICE_ID,process.env.TEMPLATE_ID, templateParams, process.env.USER_ID)
+        emailjs.send(process.env.SERVICE_ID,process.env.TEMPLATE_ID, templateParams, process.env.USER_IDnpm )
         .then((res) => {
             console.log('Successfully sent a confirmation email');
         }).catch((err) => {
@@ -98,9 +98,9 @@ function Payment() {
                         <h3>Delivery Address</h3>
                     </div>
                     <div className='payment__address'>
-                    <p>{user?.email}</p>
-                    <p>20 W 34th St</p>
-                    <p>New York, NY 10001</p>
+                    <p>{user?.email ? user.email : 'Guest'}</p>
+                    <p>{ user?.email ? '20 W 34th St' : 'Your delivery address has not been registered'}</p>
+                    <p>{ user?.email ? 'New York, NY 10001' : ''}</p>
                 </div>
                 </div>
                 

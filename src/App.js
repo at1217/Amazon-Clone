@@ -20,7 +20,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const promise = loadStripe(process.env.STRIPE);
+const promise = loadStripe(`${process.env.STRIPE_API}`);
 
 function App() {
 
